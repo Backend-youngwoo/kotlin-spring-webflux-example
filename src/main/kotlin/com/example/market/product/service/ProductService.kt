@@ -3,7 +3,6 @@ package com.example.market.product.service
 import com.example.market.entity.Product
 import com.example.market.exception.ProductNotFoundException
 import com.example.market.product.repository.ProductRepository
-import kotlinx.coroutines.reactive.awaitFirstOrNull
 import kotlinx.coroutines.reactor.awaitSingle
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import org.springframework.stereotype.Service
@@ -21,7 +20,7 @@ class ProductService(private val productRepository: ProductRepository) {
     }
 
     suspend fun addProduct(product: Product): Product {
-        val existingProduct = productRepository.findByName(product.name).awaitFirstOrNull()
+        val existingProduct = productRepository.findByName(product.name).awaitSingleOrNull()
         if (existingProduct != null) {
             throw IllegalArgumentException("Product with name '${product.name}' already exists")
         }
