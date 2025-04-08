@@ -1,7 +1,7 @@
 package com.example.market.product.service
 
 import com.example.market.entity.Product
-import com.example.market.exception.ProductNotFoundException
+import com.example.market.common.exception.ProductNotFoundException
 import com.example.market.product.repository.ProductRepository
 import kotlinx.coroutines.reactor.awaitSingle
 import kotlinx.coroutines.reactor.awaitSingleOrNull

@@ -1,7 +1,7 @@
 package com.example.market.product.controller
 
 import com.example.market.entity.Product
-import com.example.market.exception.ProductNotFoundException
+import com.example.market.common.exception.ProductNotFoundException
 import com.example.market.product.service.ProductService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
