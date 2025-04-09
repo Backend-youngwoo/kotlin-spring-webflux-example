@@ -2,6 +2,7 @@ package com.example.market.member.dto
 
 import com.example.market.common.annotation.ValidEnum
 import com.example.market.common.status.Gender
+import com.example.market.entity.Member
 import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
@@ -17,7 +18,7 @@ data class MemberRequest(
     @field:NotBlank
     @field:Pattern(
         regexp = "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%^&*])[a-zA-Z0-9!@#\$%^&*]{8,20}\$",
-        message = "영문, 숫자, 특수문자를 포함한 8~20자리로 입력해주세요"
+        message = "영문, 숫자, 특수문자를 포함한 8~20자리로 입력해주세요."
     )
     @JsonProperty("password")
     private val _password: String?,
@@ -56,4 +57,7 @@ data class MemberRequest(
         get() = Gender.valueOf(_gender!!)
     val email: String
         get() = _email!!
+
+    fun toEntity(): Member =
+        Member(id, loginId, password, name, birthDate, gender, email)
 }
