@@ -6,7 +6,6 @@ import com.example.market.member.repository.MemberRepository
 import kotlinx.coroutines.reactor.awaitSingle
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import org.springframework.stereotype.Service
-import java.time.format.DateTimeFormatter
 
 @Service
 class MemberService(private val memberRepository: MemberRepository) {
@@ -15,8 +14,6 @@ class MemberService(private val memberRepository: MemberRepository) {
         if (member != null) {
             throw IllegalArgumentException("이미 등록된 ID 입니다.")
         }
-
-        val formattedBirthDate = memberRequest.birthDate.format(DateTimeFormatter.ISO_LOCAL_DATE)
 
         member = Member(
             null,
